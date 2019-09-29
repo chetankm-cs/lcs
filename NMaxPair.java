@@ -17,16 +17,8 @@ public class NMaxPair {
         }
 
         @Override
-        public int hashCode() {
-            return (int) ((long) i * (long) j) % 10 ^ 9 + 7;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof P) {
-                P other = (P) obj;
-                return other.i == i && other.j == j;
-            } else return false;
+        public String toString() {
+            return i + "," + j;
         }
     }
         public ArrayList<Integer> solve(ArrayList<Integer> A, ArrayList<Integer> B) {
@@ -44,10 +36,10 @@ public class NMaxPair {
             Collections.reverse(B);
 
             PriorityQueue<P> q = new PriorityQueue<>(c);
-            HashSet<P> s = new HashSet<>();
+            HashSet<String> s = new HashSet<>();
             P start = new P(0,0);
             q.add(start);
-            s.add(start);
+            s.add(start.toString());
 
             int n = A.size();
             while (!q.isEmpty() && result.size()< n) {
@@ -57,12 +49,12 @@ public class NMaxPair {
                 result.add(curr.sum(A, B));
                 P n1 = new P(i + 1, j);
                 P n2 = new P(i, j + 1);
-                if (!s.contains(n1) && n1.isValid(n)) {
-                    s.add(n1);
+                if (!s.contains(n1.toString()) && n1.isValid(n)) {
+                    s.add(n1.toString());
                     q.add(n1);
                 }
-                if (!s.contains(n2) && n2.isValid(n)) {
-                    s.add(n2);
+                if (!s.contains(n2.toString()) && n2.isValid(n)) {
+                    s.add(n2.toString());
                     q.add(n2);
                 }
             }

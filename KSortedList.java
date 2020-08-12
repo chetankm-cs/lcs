@@ -13,11 +13,11 @@ public class KSortedList {
         }
 
         public class Solution {
-            private Comparator<ListNode> c = (o1, o2) -> o1.val - o2.val;
+            private Comparator<ListNode> c = Comparator.comparingInt(o -> o.val);
 
             public ListNode mergeKLists(ArrayList<ListNode> a) {
                 PriorityQueue<ListNode> pq = new PriorityQueue<>(c);
-                a.forEach(pq::add);
+                pq.addAll(a);
                 ListNode head = new ListNode(0);
                 ListNode tail = head;
                 while (!pq.isEmpty()) {

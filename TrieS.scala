@@ -2,45 +2,87 @@ import collection.{mutable => mut}
 
 class TrieS {
   class T {
-    var isEnd = false;
-    val children: mut.Map[Char, T] = mut.Map[Char, T]()
+    var end = false
+    val nodes: mut.Map[Char, T] = mut.Map[Char, T]()
   }
   private val root = new T()
 
   def insert(w: String): Unit =  {
     var temp = root
-    for (c <- w) temp = temp.children.getOrElseUpdate(c, new T());
-    temp.isEnd = true
+    for (c <- w) temp = temp.nodes.getOrElseUpdate(c, new T())
+    temp.end = true
   }
 
   def search(word: String): Boolean  = {
     var temp = root
     for (c <- word) {
-      if (temp.children.contains(c))
-        temp = temp.children(c)
+      if (temp.nodes.contains(c))
+        temp = temp.nodes(c)
       else
-        return false;
+        return false
     }
-    temp.isEnd
+    temp.end
+  }
+
+  def delete(word: String): Unit = {
+    if (!search(word)) return
+    def deleteRecur(i: Int, t: T): Boolean = {
+      if (i == word.size) {
+        t.end = false
+        return t.nodes.isEmpty
+      }
+      val x = deleteRecur(i + 1, t.nodes(word(i)))
+      if (x) t.nodes.remove(word(i))
+      t.nodes.isEmpty
+    }
+    deleteRecur(0, root)
   }
 
   def startsWith(prefix: String): Boolean = {
     var temp = root
     for (c <- prefix) {
-      if (temp.children.contains(c))
-        temp = temp.children(c);
+      if (temp.nodes.contains(c))
+        temp = temp.nodes(c)
       else
-        return false;
+        return false
     }
-    true;
+    true
+  }
+
+  def printAllPaths() = {
+    println("*" * 10)
+    val temp = root
+    val q = mut.Queue[(T, String)]()
+    q += temp -> ""
+    val lb = mut.ListBuffer[String]()
+    while (q.nonEmpty) {
+      val (node, curr) = q.dequeue()
+      if (node.end)
+        lb += curr
+      for (c <- node.nodes.keys) {
+        q += (node.nodes(c) -> (curr + c.toString))
+      }
+    }
+    println {
+      lb.toList.mkString("\n")
+    }
+    println("*" * 10)
   }
 }
 object Test extends App {
-  val t = new TrieS();
+  val t = new TrieS()
   t.insert("apple")
-  System.out.println(t.search("apple"))
-  System.out.println(t.search("app"))
-  System.out.println(t.startsWith("app"))
+  t.insert("")
+  println(t.search("apple"))
+  println(t.search("app"))
+  println(t.startsWith("app"))
   t.insert("app")
-  System.out.println(t.search("app"))
+  println(t.search("app"))
+  t.printAllPaths()
+
+  t.delete("app")
+  t.delete("")
+  println(t.search("app"))
+  println(t.startsWith("app"))
+  t.printAllPaths()
 }

@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-class Solution {
+class Solution131 {
 
     public static void main(String[] args) {
-        Solution s = new Solution();
+        Solution131 s = new Solution131();
         s.partition("bb");
     }
 

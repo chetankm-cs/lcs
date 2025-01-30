@@ -1,4 +1,3 @@
-import sun.security.provider.ConfigFile;
 
 public class Spiral {
     public int[][] generateMatrix(int n) {

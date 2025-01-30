@@ -1,6 +1,9 @@
 import collection.{mutable => mut}
 
 class TrieS {
+  // (root s) -> (u) -> |m| -> (o) -> (end)
+  //                    |r| -> (e) -> (end)
+
   class T {
     var end = false
     val nodes: mut.Map[Char, T] = mut.Map[Char, T]()
@@ -21,6 +24,7 @@ class TrieS {
       else
         return false
     }
+    // can do dfs to search further
     temp.end
   }
 

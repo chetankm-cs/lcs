@@ -1,3 +1,5 @@
+import java.util.Comparator
+
 object Sorting extends App {
   val ordString = Ordering.by[(Int, String), String](_._2).reverse
   val intString = Ordering.by[(Int, String), Int](_._1)

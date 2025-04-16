@@ -21,9 +21,18 @@ object P334 {
       }
     }
 
-    nums.indices.foreach {
-      i => if (min(i) < nums(i) && nums(i) < max(i)) return true
+    import scala.util.control.Breaks._
+
+    var result = false
+    breakable {
+      nums.indices.foreach {
+        i =>
+          if (min(i) < nums(i) && nums(i) < max(i)) {
+            result = true
+            break()
+          }
+      }
     }
-    false
+    result
   }
 }

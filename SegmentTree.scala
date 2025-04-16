@@ -8,7 +8,7 @@ object SegmentTree extends App {
         // build the tree in reverse order
         for (i <- (n- 1) to 1  by (-1)) data(i) = combine(data(2 * i), data(2 * i + 1))
 
-        def update(index: Int, v: Int) {
+        def update(index: Int, v: Int): Unit = {
             var i = n + index
             data(i) = v
             i = i / 2

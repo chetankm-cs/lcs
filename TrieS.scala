@@ -73,7 +73,7 @@ class TrieS {
     println("*" * 10)
   }
 }
-object Test extends App {
+object TestTrie extends App {
   val t = new TrieS()
   t.insert("apple")
   t.insert("")

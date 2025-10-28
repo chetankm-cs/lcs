@@ -28,7 +28,7 @@ object MinMonotonicQueue extends App {
 	val q = new MonotonicQueue
 
 	// generate a random array
-	val random = scala.util.Random(0)
+	val random = new scala.util.Random(0)
 	val arr = Array.fill(10)(random.nextInt(100))
 	val k = 3 
 

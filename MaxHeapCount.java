@@ -31,8 +31,6 @@ public class MaxHeapCount {
         else return (int)Math.pow(2, h - 1) - 1 + p;
     }
 
-    private boolean init = false;
-
     public long getHeap(int A){
         if (A <= 1) return 1;
         int l = getL(A);

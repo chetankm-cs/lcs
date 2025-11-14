@@ -1,6 +1,6 @@
 object P36 {
 
-  def check(arr: Seq[Char]) = {
+  def check(arr: Array[Char]) = {
     val validNums = arr.filter(x => x != '.')
     validNums.distinct.length == validNums.length
   }
@@ -18,10 +18,10 @@ object P36 {
       i <- 0 until 3
       j <- 0 until 3
     } yield {
-      val arr = for {
+      val arr = (for {
         a <- 0 until 3
         b <- 0 until 3
-      } yield board(3 * i + a)(3 * j + b)
+      } yield board(3 * i + a)(3 * j + b)).toArray
       check(arr)
     }).forall(identity)
 

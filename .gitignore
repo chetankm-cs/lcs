@@ -1,3 +1,10 @@
 target
 .idea
 out/*
+.metals/
+.scala-build/
+.vscode/
+.bsp
+.bsp/*
+.bloop
+.bloop/*

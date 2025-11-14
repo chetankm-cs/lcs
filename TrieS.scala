@@ -1,5 +1,6 @@
 import collection.{mutable => mut}
 
+@scala.annotation.nowarn
 class TrieS {
   // (root s) -> (u) -> |m| -> (o) -> (end)
   //                    |r| -> (e) -> (end)
@@ -31,7 +32,7 @@ class TrieS {
   def delete(word: String): Unit = {
     if (!search(word)) return
     def deleteRecur(i: Int, t: T): Boolean = {
-      if (i == word.size) {
+      if (i == word.length) {
         t.end = false
         return t.nodes.isEmpty
       }

@@ -1,4 +1,6 @@
 import scala.collection.{mutable => m}
+
+@scala.annotation.nowarn
 class LFUCache(capacity: Int) {
   var debug: Boolean = false
   var time = 0L

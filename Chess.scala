@@ -93,7 +93,7 @@ object Chess extends App {
     }
 
     def render(): Unit = {
-      for (x <- 'a' to 'h') {print(x + "  ")}
+      for (x <- 'a' to 'h') {print(s"$x  ")}
       println()
       for (i <- 0 until 8) {
         for (j <- 0 until 8) {

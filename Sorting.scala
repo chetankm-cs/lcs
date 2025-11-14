@@ -2,6 +2,7 @@ import java.util.Comparator
 import scala.collection.{mutable => m}
 import scala.util.control.Breaks._
 
+@scala.annotation.nowarn
 object Sorting extends App {
   val ordString = Ordering.by[(Int, String), String](_._2).reverse
   val intString = Ordering.by[(Int, String), Int](_._1)
@@ -35,14 +36,4 @@ object Sorting extends App {
     println(pq.dequeue())
   }
 
-  def test(): Unit = {
-    val z = Array(5, 3, 8, 1, 2)
-    z.foreach {
-      i =>
-
-        if (i == 2)
-        return
-    }
-    return
-  }
 }

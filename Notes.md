@@ -1,10 +1,12 @@
 
 ## Interview
-Suppress warnings.
+### Suppress warnings.
 > @annotation.nowarn
+For most of the imports we don't need scala prefix. For exmaple `collection.mutable` works.
+> import collection.{mutable => m}
 
-Sorting 
-
+### Sorting
+* PriorityQueue is by default max
 ```
 new Ordering[Node] {
     override def compare(x: Node, y: Node): Int = {
@@ -18,7 +20,5 @@ new Ordering[Node] {
   }
 
 ```
-
-Vector could be good choice when we need immutable prepend and append. 
-For most of the imports we don't need scala prefix. For exmaple `collection.mutable` works. 
-
+### DataStructure
+Vector could be good choice when we need immutable prepend and append.

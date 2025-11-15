@@ -2,7 +2,7 @@
 import collection.{mutable => m}
 
 object PostOrderWithoutRecursionScala extends App {
-    case class TreeNode(val value: Int, left: TreeNode = null, right: TreeNode = null) 
+    case class TreeNode(value: Int, left: TreeNode = null, right: TreeNode = null) 
 
     def postorderTraversal(root: TreeNode): List[Int] = {
         val s = m.Stack[TreeNode]()

@@ -1,6 +1,6 @@
 import collection.{mutable => mut}
 
-@scala.annotation.nowarn
+@annotation.nowarn
 class TrieS {
   // (root s) -> (u) -> |m| -> (o) -> (end)
   //                    |r| -> (e) -> (end)

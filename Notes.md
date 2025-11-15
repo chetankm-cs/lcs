@@ -1,8 +1,7 @@
 
 ## Interview
 Suppress warnings.
-> @scala.annotation.nowarn  
-
+> @annotation.nowarn
 
 Sorting 
 
@@ -19,4 +18,7 @@ new Ordering[Node] {
   }
 
 ```
+
+Vector could be good choice when we need immutable prepend and append. 
+For most of the imports we don't need scala prefix. For exmaple `collection.mutable` works. 
 

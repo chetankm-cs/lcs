@@ -1,4 +1,4 @@
-@scala.annotation.nowarn
+@annotation.nowarn
 object Breakable extends App {
   def test(): Int = {
     for (i <- 1 to 10) {
@@ -9,7 +9,7 @@ object Breakable extends App {
   }
   // write new test2 function using breakable
   def test2(): Int = {
-    import scala.util.control.Breaks._
+    import util.control.Breaks._
     var result = 0
     breakable {
       for (i <- 1 to 10) {
